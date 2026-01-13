@@ -1,0 +1,20 @@
+{
+  "Group": "Tiagoh",
+  "Name": "MyPermissions",
+  "Version": "1.0.0",
+  "Description": "Permissions plugin for Hytale server",
+  "Authors": [
+    {
+      "Name": "Tiago Malaguti"
+    }
+  ],
+  "Website": "https://www.tiagomalaguti.com",
+  "ServerVersion": "*",
+  "Dependencies": {
+    "Hytale:EntityModule": "*"
+  },
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "Main": "com.mypermissions.Main",
+  "IncludesAssetPack": true
+}
