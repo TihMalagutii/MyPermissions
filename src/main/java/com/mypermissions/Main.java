@@ -68,6 +68,7 @@ public class Main extends JavaPlugin {
             this.getCommandRegistry().registerCommand(new GroupInfoCommand());
             this.getCommandRegistry().registerCommand(new GroupCreateCommand());
             this.getCommandRegistry().registerCommand(new GroupDeleteCommand());
+            this.getCommandRegistry().registerCommand(new GroupRenameCommand());
             this.getCommandRegistry().registerCommand(new GroupAddPermCommand());
             this.getCommandRegistry().registerCommand(new GroupRemovePermCommand());
             this.getCommandRegistry().registerCommand(new GroupSetParentCommand());

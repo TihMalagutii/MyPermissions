@@ -34,6 +34,7 @@ public class MyPermsCommand extends CommandBase {
         ctx.sendMessage(Message.raw("  /mpgroup-info <group>").color(Color.WHITE));
         ctx.sendMessage(Message.raw("  /mpgroup-create <group>").color(Color.WHITE));
         ctx.sendMessage(Message.raw("  /mpgroup-delete <group>").color(Color.WHITE));
+        ctx.sendMessage(Message.raw("  /mpgroup-rename <oldName> <newName>").color(Color.WHITE));
         ctx.sendMessage(Message.raw("  /mpgroup-addperm <group> <permission>").color(Color.WHITE));
         ctx.sendMessage(Message.raw("  /mpgroup-removeperm <group> <permission>").color(Color.WHITE));
         ctx.sendMessage(Message.raw("  /mpgroup-setparent <group> <parent>").color(Color.WHITE));
