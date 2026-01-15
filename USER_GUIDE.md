@@ -376,8 +376,8 @@ Use these codes in prefixes and suffixes:
 
 ## 📞 Need More Help?
 
-- Configuration files are located in: `plugins/MyPermissions/`
-- Backups are stored in: `plugins/MyPermissions/backups/`
+- Configuration files are located in: `mods/MyPermissions/`
+- Backups are stored in: `mods/MyPermissions/backups/`
 - The system keeps the last 5 backups automatically
 - Check server console for detailed error messages
 
