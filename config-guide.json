@@ -1,0 +1,194 @@
+{
+  "_comment_1": "====================================================================================",
+  "_comment_2": "MyPermissions Configuration Guide",
+  "_comment_3": "This is an annotated example. Your actual config.json won't have these _comment fields.",
+  "_comment_4": "====================================================================================",
+  "_IMPORTANT_NOTE": "⚠️ Permission nodes shown here (server.fly, server.kick, etc.) are EXAMPLES ONLY!",
+  "_IMPORTANT_NOTE_2": "Replace them with actual Hytale permission nodes from your server/plugins.",
+  "_IMPORTANT_NOTE_3": "Refer to official Hytale documentation and plugin docs for real permission names.",
+  
+  "defaultGroup": "default",
+  "_defaultGroup_info": "The group automatically assigned to new players when they join the server",
+  
+  "groups": {
+    "default": {
+      "_group_description": "Basic group for all regular players",
+      
+      "permissions": [
+        "mypermissions.user",
+        "_permissions_info: Add permission nodes here",
+        "_WARNING: The permission examples below (server.*) are PLACEHOLDERS!",
+        "_WARNING: Replace with actual permissions from Hytale/your plugins documentation",
+        "_example: server.chat - allows chatting (EXAMPLE ONLY)",
+        "_example: server.build - allows building (EXAMPLE ONLY)",
+        "_wildcard: * - grants ALL permissions",
+        "_partial_wildcard: server.* - grants all permissions starting with 'server.'",
+        "_negation: -server.fly - denies flying even if granted by wildcard"
+      ],
+      
+      "parents": [],
+      "_parents_info": "List of parent groups to inherit permissions from",
+      "_example": ["parentGroup1", "parentGroup2"],
+      
+      "prefix": "&8[Default] ",
+      "_prefix_info": "Text shown before player name in chat",
+      "_color_codes": "&0-9, &a-f for colors | &l for bold | &o for italic | &r for reset",
+      "_example_prefix": "&6[VIP] &f - shows gold [VIP] with white space after",
+      
+      "suffix": "",
+      "_suffix_info": "Text shown after player name in chat",
+      "_example_suffix": " &7[Level 50] - shows gray level badge after name",
+      
+      "priority": 0,
+      "_priority_info": "Higher priority = takes precedence for prefix/suffix display",
+      "_priority_example": "If player is in 'vip'(50) and 'helper'(60), helper prefix shows"
+    },
+    
+    "admin": {
+      "_group_description": "Full server access - Administrator group",
+      
+      "permissions": [
+        "*"
+      ],
+      "_permissions_note": "The * wildcard grants ALL permissions on the server",
+      
+      "parents": [
+        "default"
+      ],
+      "_parents_note": "Inherits all permissions from the 'default' group",
+      
+      "prefix": "&c[Admin] ",
+      "_prefix_note": "&c = red color",
+      
+      "suffix": "",
+      
+      "priority": 100,
+      "_priority_note": "Highest priority - admin prefix always shows"
+    },
+    
+    "vip": {
+      "_example_group": "Example VIP group - customize as needed",
+      "_IMPORTANT": "⚠️ Replace 'server.*' permissions below with REAL Hytale permissions!",
+      
+      "permissions": [
+        "example.fly",
+        "example.speed",
+        "example.feature",
+        "-example.denied.feature"
+      ],
+      "_permission_explanation": [
+        "⚠️ These are EXAMPLE permission names only!",
+        "Replace with actual permissions from your Hytale server plugins",
+        "Check official Hytale documentation for real permission nodes",
+        "Negation example: -example.denied.feature - explicitly denies this"
+      ],
+      
+      "parents": [
+        "default"
+      ],
+      
+      "prefix": "&6&l[VIP]&r &f",
+      "_prefix_breakdown": "&6 (gold) &l (bold) [VIP] &r (reset) &f (white space)",
+      
+      "suffix": " &7⭐",
+      "_suffix_note": "Shows a gray star after player name",
+      
+      "priority": 50,
+      "_priority_explanation": "Mid-priority - between default(0) and admin(100)"
+    },
+    
+    "moderator": {
+      "_example_group": "Example Moderator group - for server helpers",
+      "_IMPORTANT": "⚠️ Replace with actual moderation permissions from your server!",
+      
+      "permissions": [
+        "example.kick",
+        "example.ban",
+        "example.mute",
+        "example.warn",
+        "myperms.admin"
+      ],
+      "_note": "myperms.admin is a REAL permission from MyPermissions plugin",
+      
+      "parents": [
+        "default"
+      ],
+      
+      "prefix": "&9[Mod] ",
+      "_prefix_note": "&9 = blue color",
+      
+      "suffix": "",
+      
+      "priority": 75
+    }
+  },
+  
+  "users": {
+    "_users_info": "Player data stored by UUID",
+    "_structure_example": "uuid-string",
+    
+    "00000000-0000-0000-0000-000000000000": {
+      "_example_user": "This is just an example entry",
+      
+      "username": "ExamplePlayer",
+      "_username_info": "Display name - updated automatically when player joins",
+      
+      "groups": [
+        "vip",
+        "helper"
+      ],
+      "_groups_info": "List of groups this player belongs to",
+      "_groups_note": "Players inherit permissions from all their groups",
+      
+      "permissions": [
+        "example.permission",
+        "-example.denied.permission"
+      ],
+      "_permissions_info": "User-specific permissions (override group permissions)",
+      "_WARNING": "⚠️ Replace 'example.*' with REAL permission nodes from your plugins!",
+      "_example_1": "example.permission - grants this specific player a permission",
+      "_example_2": "-example.denied.permission - denies a permission even if granted by group"
+    }
+  },
+  
+  "_configuration_tips": [
+    "1. Always test changes with /mpcheck <player> <permission>",
+    "2. Use /mpreload after editing this file manually",
+    "3. Backups are automatically created in plugins/MyPermissions/backups/",
+    "4. Higher priority groups override lower priority for prefix/suffix",
+    "5. User-specific permissions always override group permissions",
+    "6. Negated permissions (-permission) override granted permissions"
+  ],
+  
+  "_color_code_reference": {
+    "&0": "Black",
+    "&1": "Dark Blue", 
+    "&2": "Dark Green",
+    "&3": "Dark Cyan",
+    "&4": "Dark Red",
+    "&5": "Purple",
+    "&6": "Gold",
+    "&7": "Gray",
+    "&8": "Dark Gray",
+    "&9": "Blue",
+    "&a": "Green",
+    "&b": "Cyan",
+    "&c": "Red",
+    "&d": "Pink",
+    "&e": "Yellow",
+    "&f": "White",
+    "&l": "Bold",
+    "&o": "Italic",
+    "&r": "Reset"
+  },
+  
+  "_command_reference": [
+    "/mpgroup-create <name> - Create new group",
+    "/mpgroup-addperm <group> <perm> - Add permission to group",
+    "/mpgroup-setpriority <group> <number> - Set group priority",
+    "/mpuser-add <player> <group> - Add player to group",
+    "/mpuser-addperm <player> <perm> - Give player specific permission",
+    "/mpcheck <player> <perm> - Test if player has permission",
+    "/mpreload - Reload configuration"
+  ]
+}

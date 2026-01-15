@@ -5,10 +5,10 @@
   "Description": "Advanced permissions system for Hytale",
   "Authors": [
     {
-      "Name": "Tiago Malaguti"
+      "Name": "Tiagoh"
     }
   ],
-  "Website": "https://www.tiagomalaguti.com",
+  "Website": "https://tiagomalaguti.com",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},
