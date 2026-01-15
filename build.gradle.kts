@@ -19,7 +19,7 @@ java {
 
 dependencies {
     // Hytale Server API
-    compileOnly(files("C:/Users/tiago/Desktop/MyTale/hytale-downloader/2026.01.13-dcad8778f/HytaleServer.jar"))
+    compileOnly(files("libs/HytaleServer.jar"))
     
     // Gson para JSON
     implementation("com.google.code.gson:gson:2.10.1")
