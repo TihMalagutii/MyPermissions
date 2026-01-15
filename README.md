@@ -1,6 +1,6 @@
 # MyPermissions
 
-A comprehensive, LuckPerms-style permission management system for Hytale servers. Provides fine-grained access control with group inheritance, wildcards, priority-based chat formatting, and automatic backup functionality.
+A comprehensive, permission management system for Hytale servers. Provides fine-grained access control with group inheritance, wildcards, priority-based chat formatting, and automatic backup functionality.
 
 [![Java](https://img.shields.io/badge/Java-25-orange.svg)](https://www.oracle.com/java/)
 [![Hytale](https://img.shields.io/badge/Hytale-Core%20API-blue.svg)](https://hytale.com/)
@@ -19,7 +19,7 @@ A comprehensive, LuckPerms-style permission management system for Hytale servers
 
 ### Group Management
 - **Priority system**: Integer-based (higher = more important) for prefix/suffix resolution
-- **Chat integration**: Automatic prefix/suffix with Minecraft color code support (`&c`, `&l`, etc.)
+- **Chat integration**: Automatic prefix/suffix with color code support (`&c`, `&l`, etc.)
 - **Flexible inheritance**: Groups can inherit from multiple parents
 - **Default group**: Automatic assignment for new players
 
@@ -113,9 +113,9 @@ src/main/java/com/mypermissions/
 
 ### From Release
 1. Download `MyPermissions-1.0-SNAPSHOT.jar` from releases
-2. Place in your server's `plugins/` folder
+2. Place in your server's `mods/` folder
 3. Restart the server
-4. Configuration will be generated at `plugins/MyPermissions/config.json`
+4. Configuration will be generated at `mods/MyPermissions/config.json`
 
 ### Building from Source
 
@@ -232,10 +232,10 @@ All commands require `myperms.admin` permission.
 
 ## 🎨 Color Code Support
 
-Chat prefixes and suffixes support Minecraft color codes:
+Chat prefixes and suffixes support color codes:
 
 ### Colors
-- `&0`-`&9`, `&a`-`&f` - Standard Minecraft colors
+- `&0`-`&9`, `&a`-`&f` - Standard colors
 - Examples: `&c` (red), `&6` (gold), `&a` (green)
 
 ### Formatting
@@ -319,22 +319,6 @@ public class YourPlugin {
 
 ---
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Problem**: Commands show "Expected: X, actual: Y" error  
-**Solution**: Commands now use individual endpoints (e.g., `/mpgroup-create` not `/mpgroup create`)
-
-**Problem**: Permission changes not applying  
-**Solution**: Run `/mpreload` or wait for next save (auto-clears cache)
-
-**Problem**: Config corrupted  
-**Solution**: Automatic restore from latest backup, or manual restore with `/mpbackup-restore`
-
-**Problem**: Player not getting default group  
-**Solution**: Check `defaultGroup` in config.json, verify group exists
-
 ### Debug Mode
 
 Check console logs for detailed information:
@@ -373,7 +357,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Inspired by [LuckPerms](https://luckperms.net/) design philosophy
 - Built for the [Hytale](https://hytale.com/) server platform
 - Uses [Gson](https://github.com/google/gson) for JSON serialization
 
@@ -382,14 +365,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📊 Roadmap
 
 ### Planned Features
-- [ ] Web-based admin panel
+- [ ] Admin panel in-game
 - [ ] MySQL/PostgreSQL database support
 - [ ] Temporary permissions with expiration
 - [ ] Permission tracks (promotion/demotion chains)
 - [ ] Verbose mode (detailed permission resolution logging)
 - [ ] Context-based permissions (world-specific, time-based)
 - [ ] Permission inheritance visualization
-- [ ] RESTful API for external management
 
 ### Under Consideration
 - [ ] Integration with Discord bots
@@ -402,9 +384,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/MyPermissions/issues)
 - **Documentation**: See [USER_GUIDE.md](USER_GUIDE.md) for end-user documentation
-- **Discord**: [Join our community](https://discord.gg/yourserver)
 
 ---
 
