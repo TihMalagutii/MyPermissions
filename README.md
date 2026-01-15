@@ -212,6 +212,7 @@ All commands require `myperms.admin` permission.
 | `/mpgroup-removeperm <group> <permission>` | Remove permission from group |
 | `/mpgroup-setparent <group> <parent>` | Set parent group |
 | `/mpgroup-setpriority <group> <number>` | Set priority (higher = more important) |
+| `/mpgroup-rename <oldName> <newName>` | Rename group |
 
 ### User Commands
 | Command | Description |
