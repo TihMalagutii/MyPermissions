@@ -1,7 +1,6 @@
 package com.mypermissions.listener;
 
 import com.hypixel.hytale.logger.HytaleLogger;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.event.events.player.AddPlayerToWorldEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
@@ -10,7 +9,6 @@ import com.mypermissions.Main;
 import com.mypermissions.config.MyPermissionsConfig;
 
 import javax.annotation.Nonnull;
-import java.awt.Color;
 import java.util.logging.Level;
 
 public class PlayerListener {

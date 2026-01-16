@@ -3,9 +3,6 @@ package com.mypermissions.command;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.basecommands.CommandBase;
-import com.mypermissions.Main;
-import com.mypermissions.config.MyPermissionsConfig;
-
 import javax.annotation.Nonnull;
 import java.awt.Color;
 

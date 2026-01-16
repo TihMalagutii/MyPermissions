@@ -143,9 +143,6 @@ public class PermissionManager {
             return true;
         }
 
-        // Check partial wildcards and negations
-        String[] nodeParts = node.split("\\.");
-        
         for (String permission : permissions) {
             boolean isNegation = permission.startsWith("-");
             String permNode = isNegation ? permission.substring(1) : permission;
@@ -391,17 +388,5 @@ public class PermissionManager {
         }
 
         return highestGroup;
-    }
-
-    /**
-     * Logs a warning message
-     */
-    private void logWarning(String message) {
-        try {
-            Main.getConfigManager(); // Reference to avoid null
-            System.out.println("[MyPermissions] WARNING: " + message);
-        } catch (Exception e) {
-            System.err.println("[MyPermissions] WARNING: " + message);
-        }
     }
 }

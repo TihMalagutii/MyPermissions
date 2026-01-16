@@ -9,7 +9,6 @@ import com.mypermissions.Main;
 
 import javax.annotation.Nonnull;
 import java.awt.Color;
-import java.util.UUID;
 
 public class UserInfoCommand extends CommandBase {
     private final RequiredArg<String> playerArg;
