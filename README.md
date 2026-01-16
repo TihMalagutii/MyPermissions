@@ -121,7 +121,7 @@ src/main/java/com/mypermissions/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/MyPermissions.git
+git clone https://github.com/TihMalagutii/MyPermissions.git
 cd MyPermissions
 
 # Build with Gradle
