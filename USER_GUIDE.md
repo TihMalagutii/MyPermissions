@@ -60,7 +60,7 @@ Groups are collections of permissions that can be assigned to multiple players. 
 ```
 /myperms
 ```
-Shows all available commands with syntax.
+Shows all available action.
 
 ---
 

@@ -197,7 +197,8 @@ All commands require `myperms.admin` permission.
 ### Main Commands
 | Command | Description |
 |---------|-------------|
-| `/myperms` | Display help menu |
+| `/myperms` | Display menu |
+| `/mp` | Display menu |
 | `/mpreload` | Reload configuration from disk |
 | `/mpcheck <player> <permission>` | Test if player has permission |
 
