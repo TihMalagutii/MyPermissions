@@ -1,0 +1,25 @@
+$C = "../Common.ui";
+
+@RemoveButtonStyle = TextButtonStyle(
+    Default: (Background: #e74c3c, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #ff6b6b, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #c0392b, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+    LayoutMode: Left;
+    Anchor: (Height: 32);
+    Background: #1a2433(0.6);
+    Padding: (Horizontal: 8, Vertical: 4);
+
+    Label #PlayerName {
+        FlexWeight: 1;
+        Style: (FontSize: 13, TextColor: #ffffff, VerticalAlignment: Center);
+    }
+
+    TextButton #RemoveButton {
+        Anchor: (Width: 70, Height: 24);
+        Text: "REMOVE";
+        Style: @RemoveButtonStyle;
+    }
+}

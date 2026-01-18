@@ -1,0 +1,24 @@
+@RemoveButtonStyle = TextButtonStyle(
+  Default: (Background: #8b3a3a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #9b4a4a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #7b2a2a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+  LayoutMode: Left;
+  Anchor: (Height: 28);
+  Background: #1a2433(0.6);
+  Padding: (Horizontal: 8, Vertical: 4);
+
+  Label #ParentName {
+    FlexWeight: 1;
+    Text: "ParentName";
+    Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center);
+  }
+
+  TextButton #RemoveButton {
+    Text: "X";
+    Anchor: (Width: 28, Height: 20);
+    Style: @RemoveButtonStyle;
+  }
+}

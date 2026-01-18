@@ -11,6 +11,7 @@ import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import com.hypixel.hytale.server.core.permissions.PermissionsModule;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import com.mypermissions.command.MainUICommand;
 import com.mypermissions.command.MyPermsBackupCommand;
 import com.mypermissions.command.MyPermsCheckCommand;
 import com.mypermissions.command.MyPermsCommand;
@@ -56,6 +57,8 @@ public class Main extends JavaPlugin {
             // Register event listeners
             PlayerListener.register(this);
             ChatListener.register(this);
+
+            this.getCommandRegistry().registerCommand(new MainUICommand());
 
             // Register main commands
             this.getCommandRegistry().registerCommand(new MyPermsCommand());

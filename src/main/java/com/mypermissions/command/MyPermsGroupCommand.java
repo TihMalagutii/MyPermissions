@@ -98,9 +98,42 @@ public class MyPermsGroupCommand extends CommandBase {
             ctx.sendMessage(Message.raw("Group '" + groupName + "' does not exist!").color(Color.RED));
             return;
         }
+        
+        // Get default group name
+        String defaultGroup = Main.getConfig().getDefaultGroup();
+        
+        // Count how many users will be affected
+        int affectedUsers = 0;
+        
+        // Remove group from all users and add default group
+        for (var userData : Main.getConfig().getUsers().values()) {
+            if (userData.getGroups().remove(groupName)) {
+                affectedUsers++;
+                // User had this group, add default if not already present
+                if (!userData.getGroups().contains(defaultGroup)) {
+                    userData.getGroups().add(defaultGroup);
+                }
+            }
+        }
+        
+        // Remove this group from all parent lists
+        for (var group : Main.getConfig().getGroups().values()) {
+            group.getParents().remove(groupName);
+        }
+        
+        // Delete the group
         Main.getConfig().getGroups().remove(groupName);
+        
+        // Clear permission cache
+        Main.getPermissionManager().clearAllCache();
+        
+        // Save config
         Main.getConfigManager().save();
+        
         ctx.sendMessage(Message.raw("Group '" + groupName + "' deleted successfully!").color(Color.GREEN));
+        if (affectedUsers > 0) {
+            ctx.sendMessage(Message.raw(affectedUsers + " user(s) moved to '" + defaultGroup + "' group").color(Color.YELLOW));
+        }
     }
 
     private void handleList(@Nonnull CommandContext ctx) {

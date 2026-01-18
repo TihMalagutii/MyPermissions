@@ -1,0 +1,98 @@
+$C = "../Common.ui";
+
+@BackButtonStyle = TextButtonStyle(
+    Default: (Background: #3a7bd5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@AddButtonStyle = TextButtonStyle(
+    Default: (Background: #27ae60, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #2ecc71, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #1e8449, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+    Anchor: (Width: 550, Height: 700);
+    Background: #141c26(0.98);
+    LayoutMode: Top;
+    Padding: (Full: 20);
+
+    Label #GroupTitle {
+        Text: "PERMISSIONS - Group Name";
+        Anchor: (Height: 35);
+        Style: (FontSize: 18, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, LetterSpacing: 2);
+    }
+
+    Group { Anchor: (Height: 15); }
+
+    Label {
+        Text: "Add Permission to Group:";
+        Anchor: (Height: 25);
+        Style: (FontSize: 14, TextColor: #b8c5db, RenderBold: true);
+    }
+
+    Group { Anchor: (Height: 5); }
+
+    Group {
+        LayoutMode: Left;
+        Anchor: (Height: 32);
+
+        TextField #PermissionInput {
+            FlexWeight: 1;
+            PlaceholderText: "Type permission (e.g., mypermissions.admin)";
+            Background: #1a2433;
+            Padding: (Horizontal: 8);
+            Style: (FontSize: 13, TextColor: #ffffff);
+        }
+
+        Group { Anchor: (Width: 5); }
+
+        TextButton #AddPermissionButton {
+            Anchor: (Width: 60, Height: 30);
+            Text: "ADD";
+            Style: @AddButtonStyle;
+        }
+    }
+
+    Group { Anchor: (Height: 15); }
+
+    Label {
+        Text: "Permissions in this group:";
+        Anchor: (Height: 25);
+        Style: (FontSize: 14, TextColor: #b8c5db, RenderBold: true);
+    }
+
+    Group { Anchor: (Height: 5); }
+
+    Group #PermissionList {
+        Anchor: (Height: 320);
+        LayoutMode: TopScrolling;
+        Background: #0a1119(0.5);
+        Padding: (Full: 6);
+        ScrollbarStyle: (
+            Spacing: 6,
+            Size: 6,
+            Background: (TexturePath: "Common/Scrollbar.png", Border: 3),
+            Handle: (TexturePath: "Common/ScrollbarHandle.png", Border: 3),
+            HoveredHandle: (TexturePath: "Common/ScrollbarHandleHovered.png", Border: 3),
+            DraggedHandle: (TexturePath: "Common/ScrollbarHandleDragged.png", Border: 3)
+        );
+    }
+
+    Group { Anchor: (Height: 15); }
+
+    Label #Error {
+        Text: "";
+        Anchor: (Height: 25);
+        Style: (FontSize: 12, TextColor: #ff6b6b, HorizontalAlignment: Center);
+    }
+
+    Group { FlexWeight: 1; }
+
+    TextButton #BackButton {
+        Anchor: (Height: 45);
+        Text: "BACK";
+        Style: @BackButtonStyle;
+    }
+}

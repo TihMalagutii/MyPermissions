@@ -1,0 +1,65 @@
+@DeleteButtonStyle = TextButtonStyle(
+  Default: (Background: #8b3a3a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #9b4a4a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #7b2a2a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@EditButtonStyle = TextButtonStyle(
+  Default: (Background: #3a7bd5, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@PermissionsButtonStyle = TextButtonStyle(
+  Default: (Background: #3a8b4c, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #46a75b, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3a8b4c, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@PlayersButtonStyle = TextButtonStyle(
+  Default: (Background: #838b3a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #98a746, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #7c8b3a, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+  LayoutMode: Left;
+  Anchor: (Height: 44);
+  Background: #1a2433(0.8);
+  Padding: (Left: 12, Right: 8, Top: 6, Bottom: 6);
+
+  Group {
+    FlexWeight: 1;
+    LayoutMode: Left;
+
+    Label #Name {
+      Text: "Group Name";
+      Anchor: (Height: 18);
+      Style: (FontSize: 13, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+    }
+  }
+
+  TextButton #PlayersButton {
+    Text: "Players";
+    Anchor: (Width: 100, Height: 28);
+    Style: @PlayersButtonStyle;
+  }
+
+  TextButton #PermissionsButton {
+    Text: "PERMISSIONS";
+    Anchor: (Width: 100, Height: 28);
+    Style: @PermissionsButtonStyle;
+  }
+
+  TextButton #EditButton {
+    Text: "EDIT";
+    Anchor: (Width: 50, Height: 28);
+    Style: @EditButtonStyle;
+  }
+
+  TextButton #DeleteButton {
+    Text: "DELETE";
+    Anchor: (Width: 70, Height: 28);
+    Style: @DeleteButtonStyle;
+  }
+}

@@ -1,0 +1,195 @@
+$C = "../Common.ui";
+
+@PrimaryButtonStyle = TextButtonStyle(
+  Default: (Background: #3a7bd5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@CancelButtonStyle = TextButtonStyle(
+  Default: (Background: #4a5568, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5a6578, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3a4558, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@AddButtonStyle = TextButtonStyle(
+  Default: (Background: #27ae60, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #2ecc71, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #1e8449, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+  Anchor: (Width: 450, Height: 540);
+  Background: #141c26(0.98);
+  LayoutMode: Top;
+  Padding: (Full: 20);
+
+  Label {
+    Text: "CREATE NEW GROUP";
+    Anchor: (Height: 36);
+    Style: (FontSize: 18, TextColor: #ffffff, HorizontalAlignment: Center, RenderBold: true);
+  }
+
+  Group { Anchor: (Height: 1); Background: #2b3542; }
+  Group { Anchor: (Height: 16); }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 38);
+
+    Label {
+      Text: "Name:";
+      Anchor: (Width: 80);
+      Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+    }
+
+    TextField #NameInput {
+      FlexWeight: 1;
+      Anchor: (Height: 34);
+      Padding: (Horizontal: 8);
+      Background: #0a1119;
+      PlaceholderText: "Group name (required)";
+    }
+  }
+
+  Group { Anchor: (Height: 10); }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 38);
+
+    Label {
+      Text: "Prefix:";
+      Anchor: (Width: 80);
+      Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+    }
+
+    TextField #PrefixInput {
+      FlexWeight: 1;
+      Anchor: (Height: 34);
+      Padding: (Horizontal: 8);
+      Background: #0a1119;
+      PlaceholderText: "example: &c[Admin]";
+    }
+  }
+
+  Group { Anchor: (Height: 10); }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 38);
+
+    Label {
+      Text: "Suffix:";
+      Anchor: (Width: 80);
+      Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+    }
+
+    TextField #SuffixInput {
+      FlexWeight: 1;
+      Anchor: (Height: 34);
+      Padding: (Horizontal: 8);
+      Background: #0a1119;
+    }
+  }
+
+  Group { Anchor: (Height: 10); }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 38);
+
+    Label {
+      Text: "Priority:";
+      Anchor: (Width: 80);
+      Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+    }
+
+    TextField #PriorityInput {
+      FlexWeight: 1;
+      Anchor: (Height: 34);
+      Padding: (Horizontal: 8);
+      Background: #0a1119;
+      PlaceholderText: "0-1000 (default: 0)";
+    }
+  }
+
+  Group { Anchor: (Height: 12); }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 24);
+
+    Label {
+      Text: "Parents:";
+      Anchor: (Width: 80);
+      Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+    }
+
+    TextField #ParentInput {
+      FlexWeight: 1;
+      Anchor: (Height: 30);
+      Padding: (Horizontal: 8);
+      Background: #0a1119;
+      PlaceholderText: "Type parent group name";
+    }
+
+    Group { Anchor: (Width: 8); }
+
+    TextButton #AddParentButton {
+      Text: "ADD";
+      Anchor: (Width: 60, Height: 30);
+      Style: @AddButtonStyle;
+    }
+  }
+
+  Group { Anchor: (Height: 6); }
+
+  Group #ParentList {
+    Anchor: (Height: 80);
+    LayoutMode: TopScrolling;
+    Background: #0a1119(0.5);
+    Padding: (Full: 6);
+    ScrollbarStyle: (
+      Spacing: 6,
+      Size: 6,
+      Background: (TexturePath: "Common/Scrollbar.png", Border: 3),
+      Handle: (TexturePath: "Common/ScrollbarHandle.png", Border: 3),
+      HoveredHandle: (TexturePath: "Common/ScrollbarHandleHovered.png", Border: 3),
+      DraggedHandle: (TexturePath: "Common/ScrollbarHandleDragged.png", Border: 3)
+    );
+  }
+
+  Group { Anchor: (Height: 12); }
+
+  Label #Error {
+    Text: "";
+    Anchor: (Height: 20);
+    Style: (FontSize: 12, TextColor: #ff6b6b, HorizontalAlignment: Center);
+  }
+
+  Group { FlexWeight: 1; }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 40);
+
+    Group { FlexWeight: 1; }
+
+    TextButton #ConfirmButton {
+      Text: "CREATE";
+      Anchor: (Width: 110, Height: 36);
+      Style: @PrimaryButtonStyle;
+    }
+
+    Group { Anchor: (Width: 12); }
+
+    TextButton #CancelButton {
+      Text: "CANCEL";
+      Anchor: (Width: 100, Height: 36);
+      Style: @CancelButtonStyle;
+    }
+
+    Group { FlexWeight: 1; }
+  }
+}

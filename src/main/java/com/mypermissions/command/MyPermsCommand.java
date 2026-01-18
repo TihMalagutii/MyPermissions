@@ -9,8 +9,8 @@ import java.awt.Color;
 public class MyPermsCommand extends CommandBase {
 
     public MyPermsCommand() {
-        super("myperms", "Manages permissions, groups, and users");
-        this.addAliases("mp", "perms", "permission");
+        super("myperms-help", "Manages permissions, groups, and users");
+        this.addAliases("mphelp");
     }
 
     @Override

@@ -1,7 +1,7 @@
 {
   "Group": "mypermissions",
   "Name": "MyPermissions",
-  "Version": "1.1.0",
+  "Version": "1.2.0",
   "Description": "Advanced permissions system for Hytale",
   "Authors": [
     {
@@ -14,5 +14,5 @@
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "Main": "com.mypermissions.Main",
-  "IncludesAssetPack": false
+  "IncludesAssetPack": true
 }

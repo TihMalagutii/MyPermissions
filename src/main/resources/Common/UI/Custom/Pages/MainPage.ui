@@ -1,0 +1,92 @@
+$C = "../Common.ui";
+
+@CloseButtonStyle = TextButtonStyle(
+    Default: (Background: #3a7bd5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #4a8be5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #2a6bc5, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@NewGroupButtonStyle = TextButtonStyle(
+    Default: (Background: #48963b, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #61e54a, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #48963b, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+@ReloadButtonStyle = TextButtonStyle(
+    Default: (Background: #f39c12, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Hovered: (Background: #f1c40f, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+    Pressed: (Background: #e67e22, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center))
+);
+
+Group {
+    Anchor: (Width: 800, Height: 650);
+    Background: #1a1a2e(0.95);
+    LayoutMode: Top;
+    Padding: (Full: 20);
+
+    Label #Title {
+        Text: "MyPermissions";
+        Anchor: (Height: 40);
+        Style: (FontSize: 24, TextColor: #ffffff, HorizontalAlignment: Center);
+    }
+
+    Group { Anchor: (Height: 10); }
+
+    Label #Prompt {
+        Text: "Groups: ";
+        Anchor: (Height: 25);
+        Style: (FontSize: 16, TextColor: #cccccc);
+    }
+
+    Group #GroupList {
+        Anchor: (Height: 400);
+        LayoutMode: TopScrolling;
+        Background: #0a1119(0.5);
+        Padding: (Full: 6);
+        ScrollbarStyle: (
+            Spacing: 6,
+            Size: 6,
+            Background: (TexturePath: "Common/Scrollbar.png", Border: 3),
+            Handle: (TexturePath: "Common/ScrollbarHandle.png", Border: 3),
+            HoveredHandle: (TexturePath: "Common/ScrollbarHandleHovered.png", Border: 3),
+            DraggedHandle: (TexturePath: "Common/ScrollbarHandleDragged.png", Border: 3)
+        );
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    Label #Message {
+        Text: "";
+        Anchor: (Height: 22);
+        Style: (FontSize: 14, TextColor: #51cf66, HorizontalAlignment: Center, RenderBold: true);
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    Group {
+        Anchor: (Height: 45);
+        LayoutMode: Left;
+        
+        TextButton #NewGroupButton {
+            FlexWeight: 1;
+            Text: "New Group";
+            Style: @NewGroupButtonStyle;
+        }
+
+        Group { Anchor: (Width: 8); }
+
+        TextButton #ReloadButton {
+            FlexWeight: 1;
+            Text: "Reload Config";
+            Style: @ReloadButtonStyle;
+        }
+
+        Group { Anchor: (Width: 8); }
+
+        TextButton #CloseButton {
+            FlexWeight: 1;
+            Text: "Close";
+            Style: @CloseButtonStyle;
+        }
+    }
+}
