@@ -53,76 +53,89 @@ public class ChatListener {
     }
     
     /**
-     * Converts color codes (&0-9, &a-f, &l, &r) into Message with colors
+     * Converts color codes (&0-9, &a-f, &l, &o, &r) into Message with colors
      * 
      * Supported codes:
      * &0 = Black, &1 = Dark Blue, &2 = Dark Green, &3 = Dark Cyan
      * &4 = Dark Red, &5 = Purple, &6 = Gold, &7 = Gray
      * &8 = Dark Gray, &9 = Blue, &a = Green, &b = Cyan
      * &c = Red, &d = Pink, &e = Yellow, &f = White
-     * &l = Bold, &r = Reset
+     * &l = Bold, &o = Italic, &r = Reset
      */
     private static Message parseColors(@Nonnull String text) {
         Message result = Message.raw("");
         
-        Matcher matcher = COLOR_PATTERN.matcher(text);
-        int lastEnd = 0;
+        // Process text character by character
+        int i = 0;
+        Color currentColor = null;
+        boolean bold = false;
+        boolean italic = false;
+        StringBuilder currentText = new StringBuilder();
         
-        while (matcher.find()) {
-            // Add text before the color code
-            if (matcher.start() > lastEnd) {
-                String beforeColor = text.substring(lastEnd, matcher.start());
-                result.insert(Message.raw(beforeColor));
-            }
-            
-            // Apply color/format
-            String code = matcher.group(1).toLowerCase();
-            Message segment = Message.raw("");
-            
-            switch (code) {
-                // Colors
-                case "0" -> segment.color(new Color(0, 0, 0));           // Black
-                case "1" -> segment.color(new Color(0, 0, 170));         // Dark Blue
-                case "2" -> segment.color(new Color(0, 170, 0));         // Dark Green
-                case "3" -> segment.color(new Color(0, 170, 170));       // Dark Cyan
-                case "4" -> segment.color(new Color(170, 0, 0));         // Dark Red
-                case "5" -> segment.color(new Color(170, 0, 170));       // Purple
-                case "6" -> segment.color(new Color(255, 170, 0));       // Gold
-                case "7" -> segment.color(new Color(170, 170, 170));     // Gray
-                case "8" -> segment.color(new Color(85, 85, 85));        // Dark Gray
-                case "9" -> segment.color(new Color(85, 85, 255));       // Blue
-                case "a" -> segment.color(new Color(85, 255, 85));       // Green
-                case "b" -> segment.color(new Color(85, 255, 255));      // Cyan
-                case "c" -> segment.color(new Color(255, 85, 85));       // Red
-                case "d" -> segment.color(new Color(255, 85, 255));      // Pink
-                case "e" -> segment.color(new Color(255, 255, 85));      // Yellow
-                case "f" -> segment.color(new Color(255, 255, 255));     // White
+        while (i < text.length()) {
+            if (text.charAt(i) == '&' && i + 1 < text.length()) {
+                // Found a color code
+                char code = Character.toLowerCase(text.charAt(i + 1));
                 
-                // Formats
-                case "l" -> segment.bold(true);                          // Bold
-                case "o" -> segment.italic(true);                        // Italic
-                case "r" -> segment = Message.raw("");                   // Reset
+                // Check if it's a valid color code
+                if ("0123456789abcdef".indexOf(code) != -1 || "lor".indexOf(code) != -1) {
+                    // Flush current text with accumulated formatting
+                    if (currentText.length() > 0) {
+                        Message segment = Message.raw(currentText.toString());
+                        if (currentColor != null) segment.color(currentColor);
+                        if (bold) segment.bold(true);
+                        if (italic) segment.italic(true);
+                        result.insert(segment);
+                        currentText = new StringBuilder();
+                    }
+                    
+                    // Apply new formatting
+                    switch (code) {
+                        // Colors
+                        case '0' -> currentColor = new Color(0, 0, 0);           // Black
+                        case '1' -> currentColor = new Color(0, 0, 170);         // Dark Blue
+                        case '2' -> currentColor = new Color(0, 170, 0);         // Dark Green
+                        case '3' -> currentColor = new Color(0, 170, 170);       // Dark Cyan
+                        case '4' -> currentColor = new Color(170, 0, 0);         // Dark Red
+                        case '5' -> currentColor = new Color(170, 0, 170);       // Purple
+                        case '6' -> currentColor = new Color(255, 170, 0);       // Gold
+                        case '7' -> currentColor = new Color(170, 170, 170);     // Gray
+                        case '8' -> currentColor = new Color(85, 85, 85);        // Dark Gray
+                        case '9' -> currentColor = new Color(85, 85, 255);       // Blue
+                        case 'a' -> currentColor = new Color(85, 255, 85);       // Green
+                        case 'b' -> currentColor = new Color(85, 255, 255);      // Cyan
+                        case 'c' -> currentColor = new Color(255, 85, 85);       // Red
+                        case 'd' -> currentColor = new Color(255, 85, 255);      // Pink
+                        case 'e' -> currentColor = new Color(255, 255, 85);      // Yellow
+                        case 'f' -> currentColor = new Color(255, 255, 255);     // White
+                        
+                        // Formats
+                        case 'l' -> bold = true;                                 // Bold
+                        case 'o' -> italic = true;                               // Italic
+                        case 'r' -> {                                            // Reset
+                            currentColor = null;
+                            bold = false;
+                            italic = false;
+                        }
+                    }
+                    
+                    i += 2; // Skip the & and the code
+                    continue;
+                }
             }
             
-            // Find next color code or end of text
-            int nextColorStart = text.indexOf("&", matcher.end());
-            if (nextColorStart == -1) {
-                nextColorStart = text.length();
-            }
-            
-            // Add text with the applied color/format
-            if (matcher.end() < nextColorStart) {
-                String coloredText = text.substring(matcher.end(), nextColorStart);
-                segment.insert(Message.raw(coloredText));
-                result.insert(segment);
-            }
-            
-            lastEnd = nextColorStart;
+            // Regular character
+            currentText.append(text.charAt(i));
+            i++;
         }
         
-        // Add remaining text
-        if (lastEnd < text.length()) {
-            result.insert(Message.raw(text.substring(lastEnd)));
+        // Flush remaining text
+        if (currentText.length() > 0) {
+            Message segment = Message.raw(currentText.toString());
+            if (currentColor != null) segment.color(currentColor);
+            if (bold) segment.bold(true);
+            if (italic) segment.italic(true);
+            result.insert(segment);
         }
         
         return result;
