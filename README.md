@@ -367,7 +367,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📊 Roadmap
 
 ### Planned Features
-- [ ] Admin panel in-game
+- ✅ Admin panel in-game
 - [ ] MySQL/PostgreSQL database support
 - [ ] Temporary permissions with expiration
 - [ ] Permission tracks (promotion/demotion chains)
